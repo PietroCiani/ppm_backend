@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 from .views import SignUpView
-from django.views.generic.base import TemplateView
 
 # used to map urls to view functions
 # path(route, view)
