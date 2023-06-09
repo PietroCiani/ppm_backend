@@ -3,6 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    <h1>Django Tasks</h1>
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
         <p><a href="{% url 'logout' %}">Log Out</a></p>
