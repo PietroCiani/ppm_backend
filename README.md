@@ -1,6 +1,6 @@
 # Task Management System
 
 - [x] user registration/login
-- [ ] task creation
-- [ ] task assignment
+- [x] task creation/edit
+- [x] task assignment
 - [ ] task status

@@ -3,10 +3,19 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Django Tasks</h1>
+    <h1>Django TODO app</h1>
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
         <p><a href="{% url 'logout' %}">Log Out</a></p>
+        Here are your tasks:
+        <ul>
+            {% for todo in todos %}
+                <input type="checkbox" id="{{ todo.id }}" name="todo" {% if todo.completed %}checked{% endif %}/>
+                <a href="{% url 'edit_todo' todo.id %}">{{ todo.title }}</a> - {{ todo.description }}
+                <br>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_todo' %}">Add a new task</a>
     {% else %}
         <p>You are not logged in</p>
         <a href="{% url 'login' %}">Log In</a>
