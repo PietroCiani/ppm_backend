@@ -13,8 +13,11 @@ def home(request):
     return render(request, 'hello.html', {'name': 'Pietro'})
 '''
 
-def home(request):
-    todos = Todo.objects.filter(assigned_to=request.user)  # Retrieve only todos assigned to the logged user
+def home(request):  # note: works fine with filter(assigned_to=request.user)
+    if request.user.is_authenticated:
+        todos = Todo.objects.filter(assigned_to=request.user.id)  # Retrieve only todos assigned to the logged user
+    else:
+        todos = None
     context = {'todos': todos}
     return render(request, 'home.html', context)
 
