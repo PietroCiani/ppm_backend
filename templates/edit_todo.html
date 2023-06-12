@@ -1,5 +1,17 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Edit Todo</button>
-</form>
+{% extends 'base.html' %}
+
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </form>            
+            </div>
+        </div>
+    </div>
+{% endblock %}

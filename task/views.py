@@ -15,7 +15,13 @@ def home(request):
 
 def home(request):  # note: works fine with filter(assigned_to=request.user)
     if request.user.is_authenticated:
-        todos = Todo.objects.filter(assigned_to=request.user.id)  # Retrieve only todos assigned to the logged user
+        sort_param = request.GET.get('sort')
+        if sort_param == 'completed':
+            todos = Todo.objects.filter(assigned_to=request.user.id).order_by('completed')
+        elif sort_param == 'due_date':
+            todos = Todo.objects.filter(assigned_to=request.user.id).order_by('due_date')
+        else:
+            todos = Todo.objects.filter(assigned_to=request.user.id)  # Retrieve only todos assigned to the logged user
     else:
         todos = None
     context = {'todos': todos}
