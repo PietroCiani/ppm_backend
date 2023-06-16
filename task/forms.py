@@ -18,4 +18,10 @@ class TodoForm(forms.ModelForm):
     
     class Meta:
         model = Todo
-        fields = ['title', 'description', 'completed', 'created_by', 'assigned_to', 'due_date']
+        fields = ['title', 'description', 'tag', 'completed', 'created_by', 'assigned_to', 'due_date']
+
+class TagForm(forms.ModelForm):
+
+    class Meta:
+        model = Tag
+        fields = ['name']

@@ -7,8 +7,11 @@
         <div class="container-fluid">
             <h5>Hi {{ user.username }}!</h5>
             <div class="row">
-                <div class="col-10">
+                <div class="col-8">
                     <p>Here are your tasks:</p>
+                </div>
+                <div class="col-2">
+                    <a href="{% url 'add_tag' %}" class="btn btn-primary">New tag</a>
                 </div>
                 <div class="col-2">
                     <a href="{% url 'add_todo' %}" class="btn btn-primary">Add task</a>
@@ -21,7 +24,10 @@
                     <th><a href="?sort=completed">Status</a></th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th><a href="?sort=due_date">Due Date</a></th>                </tr>
+                    <th><a href="?sort=tag">Tag</a></th>
+                    <th><a href="?sort=due_date">Due Date</a></th>
+                    <th>Delete</th>
+                </tr>
             </thead>
             <tbody>
                 {% for todo in todos %}
@@ -33,7 +39,9 @@
                             <a href="{% url 'edit_todo' todo.id %}">{{ todo.title }}</a>
                         </td>
                         <td>{{ todo.description }}</td>
+                        <td>{{ todo.tag }}</td>
                         <td>{{ todo.due_date }}</td>
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'delete_todo' todo.id %}" onclick="return confirm('Are you sure you want to delete this task?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                     </tr>
                 {% endfor %}
             </tbody>

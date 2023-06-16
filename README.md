@@ -1,6 +1,6 @@
 # Task Management System
+### Login / Register page
+![](/login.png)
 
-- [x] user registration/login
-- [x] task creation/edit
-- [x] task assignment
-- [ ] task tags
+### Home page
+![](./home.png)
